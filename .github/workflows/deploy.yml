@@ -26,16 +26,16 @@ jobs:
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.EC2_HOST }}
-        username: ec2-user
+        username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_KEY }}
-        source: "target/*.jar"
-        target: "/home/ec2-user"
+        source: "complete/target/*.jar"
+        target: "/home/ubuntu"
 
     - name: SSH into EC2 and deploy
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.EC2_HOST }}
-        username: ec2-user
+        username: ubuntu
         key: ${{ secrets.EC2_KEY }}
         script: |
           docker stop java-app || true
