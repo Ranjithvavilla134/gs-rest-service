@@ -41,7 +41,7 @@ jobs:
           docker stop java-app || true
           docker rm java-app || true
           docker rmi java-spring-app || true
-          cd /home/ec2-user
+          cd /home/ubuntu
           echo -e "FROM openjdk:17\nCOPY *.jar app.jar\nENTRYPOINT [\"java\", \"-jar\", \"app.jar\"]" > Dockerfile
           docker build -t java-spring-app .
-          docker run -d -p 8080:8080 --name java-app java-spring-app
+          docker run -d -p 8081:8080 --name java-app java-spring-app
