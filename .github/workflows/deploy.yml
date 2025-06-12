@@ -19,6 +19,7 @@ jobs:
         java-version: '17'
 
     - name: Build JAR
+      working-directory: complete
       run: mvn clean package -DskipTests
 
     - name: Copy JAR to EC2
